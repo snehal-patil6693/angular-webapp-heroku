@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/file-upload/script.js"
+            ]
           },
           "configurations": {
             "production": {

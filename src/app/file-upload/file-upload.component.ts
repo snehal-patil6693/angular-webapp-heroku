@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest, HttpEventType} from '@angular/common/http';
+import * as $ from 'jquery';
+//declare var $:any;
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -8,23 +10,31 @@ import {HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest, HttpEventType} 
 export class FileUploadComponent {
 
   selectedFile: File = null as any
-
+  file:any;
+  document: any;
+  content: any;
   constructor(private http:HttpClient){}
 
-   
-   onFileSelected(event: any)
-   {
-     this.selectedFile = <File>event.target.files[0];
-   }
-   onUpload()
-   {
-     const fd = new FormData;
-     fd.append('image',this.selectedFile, this.selectedFile.name);
-     this.http.post('https://reqres.in/api/posts', fd)
-     .subscribe(res => {
-        console.log(res);
-        alert('File Uploaded Successfully!');
-     })
-   }
-
+ 
+  init() {
+    this.document.getElementById('fileInput').addEventListener('change', this.handleFileSelect, false);
+  }
+  
+  handleFileSelect(event: any) {
+    const reader = new FileReader()
+    reader.onload = this.handleFileLoad;
+    reader.readAsText(event.target.files[0])
+  }
+  
+  handleFileLoad(event: any) {
+    console.log(event);
+    this.document.getElementById('fileContent').textContent = event.target.result;
+  }
+  
+    
+  
+  
 }
+  
+  
+  

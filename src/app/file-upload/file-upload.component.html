@@ -1,7 +1,20 @@
 
-<h2><b>File-upload:</b></h2>
+<h2>File Upload:</h2>
 
-<input type="file" (change)="onFileSelected($event)">
-<button type="button" (click)="onUpload()">Upload</button> 
+<!--  <input type="file" (change)="onFileSelected($event)">
+<button type="submit" (click)="onUpload()">Upload</button>  
 
-<div id="app-file-upload" type="file" class="file-upload"></div>
+     -->
+     
+ <div id="app-file-upload" class="file-upload"></div>
+
+ <body onload="init()">
+    <input id="fileInput" type="file" accept=".txt,.html" name="file" />
+    <h2>File Content:</h2>
+    <pre id="fileContent"></pre>
+  </body>
+
+  
+<!--  <object data="init();"  width="300" height="200">
+    Not supported
+    </object>  -->
